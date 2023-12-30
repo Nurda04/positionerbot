@@ -85,10 +85,10 @@ async def set_position(message: types.Message, state: FSMContext):
 
 
 def get_position2(pos_name)->(str):
-    check_at = db.db_check_at(pos_name)
-    check_go = db.db_check_go(pos_name)
-    position_at = db.db_get_position_at(pos_name)
-    position_go = db.db_get_position_go(pos_name)
+    check_at = db.db_check_oper('at', pos_name)
+    check_go = db.db_check_oper('go', pos_name)
+    position_at = db.db_get_position('at', pos_name)
+    position_go = db.db_get_position('go', pos_name)
 
     if not check_go:
         if not check_at:

@@ -60,21 +60,12 @@ def db_check_name(pos_name):
     return result.fetchall()
 
 
-def db_check_at(pos_name):
-    result = cur.execute("SELECT pos FROM position WHERE operation = ? AND users_name = ? AND day = ?", ("at", pos_name, db_get_day()))
+def db_check_oper(oper, pos_name):
+    result = cur.execute("SELECT pos FROM position WHERE operation = ? AND users_name = ? AND day = ?", (oper, pos_name, db_get_day()))
     return result.fetchall()
 
 
-def db_check_go(pos_name):
-    result = cur.execute("SELECT pos FROM position WHERE operation = ? AND users_name = ? AND day = ?", ("go", pos_name, db_get_day()))
-    return result.fetchall()
-
-
-def db_get_position_at(pos_name):
-    result = cur.execute("SELECT pos, time FROM position WHERE operation = ? AND users_name = ? AND day = ?", ("at", pos_name, db_get_day()))
-    return result.fetchone()
-    
-def db_get_position_go(pos_name):
-    result = cur.execute("SELECT pos, time FROM position WHERE operation = ? AND users_name = ? AND day = ?", ("go", pos_name, db_get_day()))
+def db_get_position(oper, pos_name):
+    result = cur.execute("SELECT pos, time FROM position WHERE operation = ? AND users_name = ? AND day = ?", (oper, pos_name, db_get_day()))
     return result.fetchone()
     
